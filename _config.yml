@@ -1,15 +1,15 @@
 #document settings
 title: DATA Act Style Guide
 desc: "A style guide for the DATA Act site"
-url: //dataactstyleguide.github.io/
-repo_name: dataactstyleguide.github.io
+url: //fedspendingtransparency.github.io/dataactstyleguide/
+repo_name: fedspendingtransparency.github.io/dataactstyleguide
 branch: master
 encoding: utf-8
 
 
 
 #global settings, no need to change these
-root_url: //dataactstyleguide.github.io
+root_url: //fedspendingtransparency.github.io/dataactstyleguide
 
 # default build settings for running locally, no need to edit
 highlighter: rouge
