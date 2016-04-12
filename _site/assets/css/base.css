@@ -1,0 +1,9 @@
+@import url(bootstrap.css);
+@import url(site.css);
+header {
+  width: 80%;
+  margin: 40px 10% 5px; }
+  header h1 {
+    color: #333;
+    width: 45%;
+    float: left; }

@@ -1,0 +1,36 @@
+#document settings
+title: DATA Act Style Guide
+desc: "A style guide for the DATA Act site"
+url: //DATA-Act-style-guide.io/
+repo_name: DATA-Act-style-guide.io
+branch: master
+encoding: utf-8
+
+
+
+#global settings, no need to change these
+root_url: //DATA-Act-style-guide.io
+
+# default build settings for running locally, no need to edit
+highlighter: rouge
+exclude: ["script", "vendor", "Gemfile", "Gemfile.lock", "config.ru", "Procfile", "Rakefile", "readme.md", "LICENSE"]
+markdown: kramdown
+# markdown: redcarpet
+# redcarpet:
+#   extensions: []
+relative_permalinks: false
+
+
+navigation:
+ - title: Style Guide
+   url: /index.html
+ - title: Typography
+   url: /typography
+ # - title: Style
+ #   url: /style-tests
+
+
+
+sass:
+  sass_dir:          assets/_scss
+  #style:            :compressed

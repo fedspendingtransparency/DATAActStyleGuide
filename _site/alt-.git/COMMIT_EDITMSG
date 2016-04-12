@@ -1,0 +1,4 @@
+Footer pinned to the bottom of the page
+
+Fxed the footer to align to the bottom of the browser window when the
+page content is less then the window height.

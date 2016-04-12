@@ -1,0 +1,8 @@
+# pack-refs with: peeled fully-peeled 
+59184e69ef163344c45d262815a8ac54d237e5e3 refs/remotes/origin/18f-pages
+fbee514afccce5d477606b33014e6c21e65d985a refs/remotes/origin/20150930-update
+bef810d4e13b83ee718771dbe61610c96da270cc refs/remotes/origin/20151021-updates
+44f6b6660dcdc9f53b29945818469b8d75eedc9a refs/remotes/origin/data-dict
+59184e69ef163344c45d262815a8ac54d237e5e3 refs/remotes/origin/dfstage
+5ca1aa924174e426cfed35565bdfb34649ecdd54 refs/remotes/origin/fix-internal-links
+91a89b07af3737a348cb54974b53013dd80911b3 refs/remotes/origin/generate-from-csv

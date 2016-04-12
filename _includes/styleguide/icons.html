@@ -1,0 +1,21 @@
+<section class="wrap">
+    <div class="row mb-40">
+        <div class="col-md-12">
+            <h2 id="icons">Iconography</h2>
+            <p>Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+            <div class="row">
+                <div class="col-md-12 mt-30">
+                    <div class="icon-block-wrap">
+                        {% for icon in site.data.icons %}
+                        <div class="icon-block">
+                            <div class="icon usa-da-icon-{{ icon.name }}" aria-hidden="true"></div>
+                            <p>usa-da-icon-{{icon.name}} | "\{{icon.number}}"</p>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
