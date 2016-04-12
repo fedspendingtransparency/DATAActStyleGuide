@@ -3,6 +3,8 @@ title: DATA Act Style Guide
 desc: "A style guide for the DATA Act site"
 url: //fedspendingtransparency.github.io/DATAActStyleGuide/
 repo_name: fedspendingtransparency.github.io/DATAActStyleGuide
+site: fedspendingtransparency.github.io
+baseurl: /DATAActStyleGuide
 branch: master
 encoding: utf-8
 
