@@ -167,4 +167,26 @@ $(window).scroll(function() {
 
 
 
+/* copy sass variable for color to clipboard */
+ function clip(elementId) {
+     var aux = document.createElement("input");
+     aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+     document.body.appendChild(aux);
+     aux.select();
+     document.execCommand("copy");
+     document.body.removeChild(aux);
+     // console.log(aux);
+     // var bla = aux;
+     // console.log("new" + bla);
+ };
+
+$(document).ready(function() {
+    $('.color-block').on( "click", function() {
+        // console.log("it worked");
+        var clipVar = $(this).find('li:first-child').attr('id');
+        clip(clipVar)
+        $(".alertMsg").fadeIn(1000).delay(2000).fadeOut(1000);
+        // document.getElementById("p1").innerHTML = clipHex;
+    });
+ });
 

@@ -458,3 +458,19 @@ pre {
     padding: 1.4em;
     font-size: 1.2rem;
 }
+
+
+.alertMsg{
+    z-index: 999;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    background: as-alpha($color-gold-lighter, 0.95);
+    display:none;
+    & h3{
+        text-align: center;
+        font-size: 2.4rem;
+        margin: 2.0rem;
+    }
+}

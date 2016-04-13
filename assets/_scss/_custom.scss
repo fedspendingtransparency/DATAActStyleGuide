@@ -190,10 +190,6 @@ ul.no-bullet{
     margin-bottom: 0;
 }
 
-// .flex-wrap{
-//     @include flexbox-display-flex();
-// }
-
 .modal-sm{
     width: 400px;
     @include media($x-small-screen) {

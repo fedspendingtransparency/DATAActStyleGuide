@@ -11,15 +11,6 @@ html, body {
 .outter-wrap{
     margin-top: 104px;
 }
-// .usa-da-body {
-//   display: flex;
-//   min-height: 100vh;
-//   flex-direction: column;
-// }
-
-// .usa-da-outter-wrap {
-//     @include flex(1 0 auto);
-// }
 
 
 /* Colors */
@@ -136,7 +127,6 @@ input[type="text"], input[type="email"], input[type="password"], input[type="url
     display: block;
     font-size: $base-font-size;
     margin: 0;
-    // max-width: 46rem;
     width: 100%;
     outline: none;
     padding: 1rem .7em;
@@ -176,7 +166,7 @@ select {
     color: #999;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    background: url('/assets/graphics/down_arrow.png') no-repeat 95% 50%;
+    background: url("../graphics/down_arrow.png") no-repeat 95% 50%;
 }
 
 
