@@ -372,10 +372,10 @@ button,
     &.btn-primary {
         @include btnBase($color-white, $color-primary);
         &:active {
-           @include btnBase($color-white, $color-primary-darker); 
+           @include btnBase($color-white, $color-primary-darkest); 
         }
         &:hover {
-            @include btnBase($color-white, $color-primary-darkest);
+            @include btnBase($color-white, $color-primary-darker);
         }
     }
     &.btn-primary-alt {
@@ -439,6 +439,21 @@ button,
             @include btnBase($color-white, $color-gray);
             box-shadow: inset 0 0 0 1px $color-gray;
         }
+    }
+
+    &.btn-disabled, &[disabled], & fieldset[disabled]{
+        cursor: not-allowed;
+        opacity: 0.65;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    &.btn-bdr{
+        border: white solid 1px;
+    }
+    &.btn-full{
+        width: 100%;
     }
 }
 

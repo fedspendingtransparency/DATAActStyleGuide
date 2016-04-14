@@ -318,10 +318,10 @@ h2.styleguide-only {
 .usa-da-button {
     &.btn-primary {
         &.styleguide-active {
-            background: $color-primary-darker;
+            background: $color-primary-darkest;
         }
         &.styleguide-hover {
-            background: $color-primary-darkest;
+            background: $color-primary-darker;
         }
     }
     &.btn-primary-alt {

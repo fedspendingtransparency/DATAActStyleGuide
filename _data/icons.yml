@@ -72,3 +72,9 @@
 
 - name: info-circle
   number: 78
+
+- name: tachometer
+  number: 7a
+
+- name: cog
+  number: 41
