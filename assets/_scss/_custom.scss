@@ -444,9 +444,15 @@ button,
     &.btn-disabled, &[disabled], & fieldset[disabled]{
         cursor: not-allowed;
         opacity: 0.65;
-        filter: alpha(opacity=65);
+        background:$color-gray-lighter;
         -webkit-box-shadow: none;
         box-shadow: none;
+        color:$color-gray;
+        &:hover{
+            opacity: 0.75;
+            background:$color-gray-lighter;
+            color:$color-gray;
+        }
     }
 
     &.btn-bdr{

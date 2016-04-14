@@ -6608,9 +6608,38 @@ button,
   [type="image"] fieldset[disabled] {
     cursor: not-allowed;
     opacity: 0.65;
-    filter: alpha(opacity=65);
+    background: #d6d7d9;
     -webkit-box-shadow: none;
-    box-shadow: none; }
+    box-shadow: none;
+    color: #5b616b; }
+    .usa-da-button.btn-disabled:hover, .usa-da-button[disabled]:hover, .usa-da-button fieldset[disabled]:hover,
+    .usa-da-button-primary.btn-disabled:hover,
+    .usa-da-button-primary[disabled]:hover,
+    .usa-da-button-primary fieldset[disabled]:hover,
+    .usa-da-button:visited.btn-disabled:hover,
+    .usa-da-button:visited[disabled]:hover,
+    .usa-da-button:visited fieldset[disabled]:hover,
+    .usa-da-button-primary:visited.btn-disabled:hover,
+    .usa-da-button-primary:visited[disabled]:hover,
+    .usa-da-button-primary:visited fieldset[disabled]:hover,
+    button.btn-disabled:hover,
+    button[disabled]:hover,
+    button fieldset[disabled]:hover,
+    [type="button"].btn-disabled:hover,
+    [type="button"][disabled]:hover,
+    [type="button"] fieldset[disabled]:hover,
+    [type="submit"].btn-disabled:hover,
+    [type="submit"][disabled]:hover,
+    [type="submit"] fieldset[disabled]:hover,
+    [type="reset"].btn-disabled:hover,
+    [type="reset"][disabled]:hover,
+    [type="reset"] fieldset[disabled]:hover,
+    [type="image"].btn-disabled:hover,
+    [type="image"][disabled]:hover,
+    [type="image"] fieldset[disabled]:hover {
+      opacity: 0.75;
+      background: #d6d7d9;
+      color: #5b616b; }
   .usa-da-button.btn-bdr,
   .usa-da-button-primary.btn-bdr,
   .usa-da-button:visited.btn-bdr,
