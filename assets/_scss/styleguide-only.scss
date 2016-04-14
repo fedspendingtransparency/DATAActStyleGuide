@@ -313,7 +313,9 @@ h2.styleguide-only {
     padding: 0 0 10px;
 }
 
-.btn {
+
+
+.usa-da-button {
     &.btn-primary {
         &.styleguide-active {
             background: $color-primary-darker;
@@ -340,6 +342,19 @@ h2.styleguide-only {
             background: $color-secondary-dark;
         }
     }
+
+    &.btn-danger-outline {
+        &.styleguide-active {
+            background: $color-secondary-darkest;
+            color: $color-white;
+            box-shadow: none;
+        }
+        &.styleguide-hover {
+            background: $color-secondary;
+            color: $color-white;
+        }
+    }
+
     &.btn-default {
         &.styleguide-active {
             color: $color-primary-darkest;

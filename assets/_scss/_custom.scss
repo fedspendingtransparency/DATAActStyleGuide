@@ -4,12 +4,12 @@
 //     margin: 0 auto;
 // }
 
-.btn {
-    border-radius: 0;
-    &:visited {
-        color: #fff;
-    }
-}
+// .btn {
+//     border-radius: 0;
+//     &:visited {
+//         color: #fff;
+//     }
+// }
 
 h1,
 h2,
@@ -344,11 +344,25 @@ a.list-group-item {
     background: $bgColor;
 }
 
-.btn {
+
+
+.usa-da-button,
+.usa-da-button-primary,
+.usa-da-button:visited,
+.usa-da-button-primary:visited,
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+[type="image"] {
     font-size: 1.4rem;
     font-weight: $font-bold;
     padding: 1rem 2rem;
     border: none;
+    border-radius: 0;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none!important;
     &.btn-lg {
         padding: 16px 24px 15px;
         font-size: 1.6rem;
@@ -380,6 +394,17 @@ a.list-group-item {
         }
         &:hover {
             @include btnBase($color-white, $color-secondary-dark);
+        }
+    }
+    &.btn-danger-outline {
+        @include btnBase($color-secondary, transparent);
+        box-shadow: inset 0 0 0 1px $color-secondary;
+        &:active {
+            @include btnBase($color-white, $color-secondary-darkest);
+            box-shadow: none;
+        }
+        &:hover {
+            @include btnBase($color-white, $color-secondary);
         }
     }
     &.btn-default {
@@ -415,7 +440,6 @@ a.list-group-item {
             box-shadow: inset 0 0 0 1px $color-gray;
         }
     }
-
 }
 
 
