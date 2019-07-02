@@ -5,7 +5,7 @@ const createRouteObj = (link, component, exact = false, name = link) => ({
     link,
     component,
     name,
-    exact: true
+    exact
 });
 
 export default [
