@@ -8,7 +8,7 @@ const isProduction = (process.env.NODE_ENV === 'production');
 
 module.exports = {
     entry: {
-        app: "./index.js"
+        app: "./index.jsx"
     },
     output: {
         publicPath: "/",
