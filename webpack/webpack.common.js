@@ -70,7 +70,8 @@ module.exports = {
                         loader: "sass-loader",
                         options: {
                             sourceMap: !isProduction,
-                            includePaths: ["./src/_scss", "./node_modules"]
+                            // eslint-disable-next-line global-require
+                            includePaths: [require("bourbon").includePaths, "./src/_scss", "./node_modules"]
                         }
                     }
                 ]

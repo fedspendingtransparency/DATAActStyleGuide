@@ -4,6 +4,8 @@ import { hot } from "react-hot-loader";
 
 import App from "./components/App";
 
+require('./styles/main.scss');
+
 const app = render(
     <App />,
     document.getElementById("app")
