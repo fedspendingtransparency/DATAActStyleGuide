@@ -1,18 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 
 import routes from "../routes";
 import Nav from "./Nav";
 
+const history = createBrowserHistory();
+
 export default () => (
     <div className="container">
-        <Router>
-            <React.Fragment>
+        <Router history={history}>
+            <div>
                 <Nav />
                 {routes.map((route) => (
                     <Route exact={route.exact} path={route.link} component={route.component} />
                 ))}
-            </React.Fragment>
+            </div>
         </Router>
     </div>
 );

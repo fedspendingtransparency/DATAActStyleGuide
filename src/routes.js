@@ -1,14 +1,14 @@
-import Home from "./components/Home";
-import Button from "./components/Button";
+import HomePage from "./pages/HomePage";
+import TooltipPage from "./pages/TooltipPage";
 
 const createRouteObj = (link, component, exact = false, name = link) => ({
     link,
     component,
-    name,
-    exact
+    exact,
+    name
 });
 
 export default [
-    createRouteObj('/', Home, true, "Home"),
-    createRouteObj('/button', Button, true, "Button")
+    createRouteObj('/', HomePage, true, "Home"),
+    createRouteObj('/tooltip', TooltipPage, true, "Tooltip")
 ];

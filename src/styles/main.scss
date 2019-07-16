@@ -1,4 +1,7 @@
 @import "bourbon";
 
-@import 'base/index';
+@import 'base/index'; // variables, mixins, functions etc
+
+@import 'pages/index';
+@import 'navbar/index';
 @import 'components/index';

@@ -74,6 +74,7 @@
     "d3-interpolate": "^1.1.4",
     "d3-scale": "^1.0.4",
     "file-loader": "^3.0.1",
+    "history": "^4.9.0",
     "lodash": "^4.6.1",
     "mapbox-gl": "^0.44.2",
     "moment": "2.19.3",

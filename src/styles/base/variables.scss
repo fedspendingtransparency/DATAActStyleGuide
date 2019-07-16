@@ -1,16 +1,20 @@
 // Typography
+@function rem($px) {
+    $valueInRems: $px / 16;
+    @return #{$valueInRems}rem;
+}
 $em-base:             10px;
-$base-font-size:      rem(16px);
-$small-font-size:     rem(14px);
-$smallest-font-size:  rem(11px);
-$lead-font-size:      rem(20px);
-$title-font-size:     rem(52px);
-$h1-font-size:        rem(59px);
-$h2-font-size:        rem(47px);
-$h3-font-size:        rem(38px);
-$h4-font-size:        rem(30px);
-$h5-font-size:        rem(24px);
-$h6-font-size:        rem(19px);
+$base-font-size:      rem(16);
+$small-font-size:     rem(14);
+$smallest-font-size:  rem(11);
+$lead-font-size:      rem(20);
+$title-font-size:     rem(52);
+$h1-font-size:        rem(59);
+$h2-font-size:        rem(47);
+$h3-font-size:        rem(38);
+$h4-font-size:        rem(30);
+$h5-font-size:        rem(24);
+$h6-font-size:        rem(19);
 $base-line-height:    1.5;
 $heading-line-height: 1.2;
 $lead-line-height:    1.7;
@@ -22,7 +26,6 @@ $font-light:		  200;
 $font-normal:         400;
 $font-semibold:  	  600;
 $font-bold:           700;
-
 
 // Color
 $color-primary:              #0071bc;
@@ -96,13 +99,11 @@ $color-gray-border:          #D8D8D8;
 
 $color-placeholder:          #747474;
 
-
 // Global Paadding and Margins
 // (example usage {padding: ($global-pad * 4);} = 60px of padding.)
 $global-pad-mrg: rem(15);
 $global-pad: $global-pad-mrg;
 $global-mrg: $global-pad-mrg;
-
 
 // Mobile First Breakpoints
 $small-screen:      320px;
@@ -110,7 +111,6 @@ $tablet-screen:     768px;
 $medium-screen:     992px;
 $large-screen:      1200px;
 $x-large-screen:    1640px;
-
 
 // Magic Numbers
 $text-max-width:      rem(530);
