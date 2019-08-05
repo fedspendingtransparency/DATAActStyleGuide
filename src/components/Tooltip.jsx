@@ -3,7 +3,7 @@
  * Created by Lizzie Salita 3/8/19
  */
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { throttle } from "lodash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,17 +28,10 @@ const propTypes = {
     styles: PropTypes.shape({}) // currently only using width
 };
 
-const defaultProps = {
-    wide: false,
-    verticalCenter: false,
-    offsetAdjustments: {
-        top: -15, // InfoToolTip offset
-        right: 30, // InfoToolTip offset
-        left: 0
-    },
-    controlledProps: {
-        isControlled: false
-    }
+const defaultOffsetAdjustments = {
+    top: -15, // InfoToolTip offset
+    right: 30, // InfoToolTip offset
+    left: 0
 };
 
 const horizontalPadding = 20;
@@ -46,77 +39,45 @@ const horizontalPadding = 20;
 const tooltipIcons = {
     info: <FontAwesomeIcon className="tooltip__icon" icon="info-circle" />
 };
-export default class TooltipWrapper extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            showTooltip: false,
-            offsetTop: 0
-        };
+const TooltipWrapper = ({
+    wide = false,
+    offsetAdjustments = defaultOffsetAdjustments,
+    controlledProps = { isControlled: false },
+    tooltipComponent,
+    left,
+    styles = {},
+    children = null,
+    icon = ''
+}) => {
+    const [dimensions, setDimensions] = useState({ offsetTop: 0, offsetLeft: 0, width: 0 });
+    const [showTooltip, setTooltip] = useState(false);
+    const ref = useRef({ offsetLeft: 0, offsetTop: 0, width: 0 });
 
-        this.showTooltip = this.showTooltip.bind(this);
-        this.closeTooltip = this.closeTooltip.bind(this);
-        this.measureOffset = throttle(this.measureOffset.bind(this), 16);
-    }
-
-    componentDidMount() {
-        this.measureOffset();
-        window.addEventListener("scroll", this.measureOffset);
-        window.addEventListener("resize", this.measureOffset);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.measureOffset);
-        window.removeEventListener("resize", this.measureOffset);
-    }
-
-    showTooltip() {
-        if (!this.props.controlledProps.isControlled) {
-            this.setState({
-                showTooltip: true
-            });
-        }
-        else {
-            this.props.controlledProps.showTooltip();
-        }
-    }
-
-    closeTooltip() {
-        if (!this.props.controlledProps.isControlled) {
-            this.setState({
-                showTooltip: false
-            });
-        }
-        else {
-            this.props.controlledProps.closeTooltip();
-        }
-    }
-
-    measureOffset() {
+    const measureOffset = () => {
         let tooltipWidth = 375;
-        const tooltipContainer = this.tooltipContainer;
+        const tooltipContainer = ref.current;
         const ttContainerWidth = tooltipContainer.clientWidth;
 
-        const offsetTop = tooltipContainer.offsetTop + this.props.offsetAdjustments.top;
+        const offsetTop = tooltipContainer.offsetTop + offsetAdjustments.top;
         const totalSpace = window.innerWidth;
-        const spaceToRight = (totalSpace - tooltipContainer.offsetLeft) - ttContainerWidth;
         const spaceToLeft = tooltipContainer.offsetLeft;
+        const spaceToRight = (totalSpace - spaceToLeft) - ttContainerWidth;
 
-        if (this.props.wide && this.props.left) {
+        if (wide && left) {
             tooltipWidth = (spaceToLeft > 800)
                 ? 700
                 : spaceToLeft - 100;
         }
-        else if (this.props.wide) {
+        else if (wide) {
             tooltipWidth = (spaceToRight > 800)
                 ? 700
                 : spaceToRight - 100;
         }
 
-        if (this.props.left) {
+        if (left) {
             const startingPositionLeft = spaceToLeft - tooltipWidth; // minus tooltipWidth b/c right corner of toolTip is flush w/ left edge of toolTip container
-            this.setState({
+            setDimensions({
                 offsetTop,
                 offsetLeft: startingPositionLeft - horizontalPadding,
                 width: tooltipWidth
@@ -124,67 +85,91 @@ export default class TooltipWrapper extends React.Component {
         }
         else {
             const startingPositionLeft = spaceToLeft + ttContainerWidth; // plus ttContainerWidth b/c left corner of toolTip is flush w/ right edge of toolTip container
-            this.setState({
+            setDimensions({
                 offsetTop,
                 offsetLeft: startingPositionLeft + horizontalPadding,
                 width: tooltipWidth
             });
         }
-    }
+    };
 
-    render() {
-        const showTooltip = (this.props.controlledProps.isControlled) ? this.props.controlledProps.isVisible : this.state.showTooltip;
-        let tooltip = null;
-        const style = Object.keys(this.state)
-            .filter((key) => ['offsetTop', 'offsetLeft', 'width'].includes(key))
-            .reduce((acc, item) => {
-                if (item === 'offsetLeft') return { ...acc, left: this.state[item] };
-                return { ...acc, [item]: this.state[item] };
-            }, {});
-        if (showTooltip) {
-            tooltip = (
-                <div className="tooltip-spacer" style={style}>
-                    <div className="tooltip" id="tooltip" role="tooltip">
-                        <div className="tooltip__interior">
-                            <div
-                                className={`tooltip-pointer ${
-                                    this.props.left ? "right" : ""
-                                }`} />
-                            <div className="tooltip__content">
-                                <div className="tooltip__message">
-                                    {this.props.tooltipComponent}
-                                </div>
+    const _measureOffset = throttle(measureOffset, 16);
+
+    useEffect(() => {
+        _measureOffset();
+        window.addEventListener("scroll", _measureOffset);
+        window.addEventListener("resize", _measureOffset);
+        return () => {
+            window.removeEventListener("scroll", _measureOffset);
+            window.removeEventListener("resize", _measureOffset);
+        };
+    }, [_measureOffset]);
+
+    const handleShowTooltip = () => {
+        if (!controlledProps.isControlled) {
+            setTooltip(true);
+        }
+        else {
+            controlledProps.showTooltip();
+        }
+    };
+
+    const handleCloseTooltip = () => {
+        if (!controlledProps.isControlled) {
+            setTooltip(false);
+        }
+        else {
+            controlledProps.closeTooltip();
+        }
+    };
+
+    const isTooltipVisible = (controlledProps.isControlled) ? controlledProps.isVisible : showTooltip;
+    const style = Object.keys(dimensions)
+        .reduce((acc, item) => {
+            if (item === 'offsetLeft') return { ...acc, left: dimensions[item] };
+            return { ...acc, [item]: dimensions[item] };
+        }, {});
+
+    let tooltip = null;
+
+    if (isTooltipVisible) {
+        tooltip = (
+            <div className="tooltip-spacer" style={style}>
+                <div className="tooltip" id="tooltip" role="tooltip">
+                    <div className="tooltip__interior">
+                        <div className={`tooltip-pointer ${left ? "right" : ""}`} />
+                        <div className="tooltip__content">
+                            <div className="tooltip__message">
+                                {tooltipComponent}
                             </div>
                         </div>
                     </div>
                 </div>
-            );
-        }
-        return (
-            <div className="tooltip-wrapper" style={this.props.styles}>
-                <div
-                    ref={(div) => {
-                        this.tooltipContainer = div;
-                    }}>
-                    <div
-                        role="button"
-                        tabIndex="0"
-                        className="tooltip__hover-wrapper"
-                        onBlur={this.closeTooltip}
-                        onFocus={this.showTooltip}
-                        onKeyPress={this.showTooltip}
-                        onMouseEnter={this.showTooltip}
-                        onMouseLeave={this.closeTooltip}
-                        onClick={this.showTooltip}>
-                        {this.props.children}
-                        {this.props.icon && tooltipIcons[this.props.icon]}
-                    </div>
-                    {tooltip}
-                </div>
             </div>
         );
     }
-}
+    return (
+        <div className="tooltip-wrapper" style={styles}>
+            <div ref={ref}>
+                <div
+                    role="button"
+                    tabIndex="0"
+                    className="tooltip__hover-wrapper"
+                    onBlur={handleCloseTooltip}
+                    onFocus={handleShowTooltip}
+                    onKeyPress={handleShowTooltip}
+                    onMouseEnter={handleShowTooltip}
+                    onMouseLeave={handleCloseTooltip}
+                    onClick={handleShowTooltip}>
+                    {children}
+                    {icon && tooltipIcons[icon]}
+                </div>
+                {tooltip}
+            </div>
+        </div>
+    );
+};
 
-TooltipWrapper.defaultProps = defaultProps;
 TooltipWrapper.propTypes = propTypes;
+
+export default TooltipWrapper;
