@@ -54,56 +54,56 @@ const TooltipWrapper = ({
     const [showTooltip, setTooltip] = useState(false);
     const ref = useRef({ offsetLeft: 0, offsetTop: 0, width: 0 });
 
-    const measureOffset = () => {
-        let tooltipWidth = 375;
-        const tooltipContainer = ref.current;
-        const ttContainerWidth = tooltipContainer.clientWidth;
-
-        const offsetTop = tooltipContainer.offsetTop + offsetAdjustments.top;
-        const totalSpace = window.innerWidth;
-        const spaceToLeft = tooltipContainer.offsetLeft;
-        const spaceToRight = (totalSpace - spaceToLeft) - ttContainerWidth;
-
-        if (wide && left) {
-            tooltipWidth = (spaceToLeft > 800)
-                ? 700
-                : spaceToLeft - 100;
-        }
-        else if (wide) {
-            tooltipWidth = (spaceToRight > 800)
-                ? 700
-                : spaceToRight - 100;
-        }
-
-        if (left) {
-            const startingPositionLeft = spaceToLeft - tooltipWidth; // minus tooltipWidth b/c right corner of toolTip is flush w/ left edge of toolTip container
-            setDimensions({
-                offsetTop,
-                offsetLeft: startingPositionLeft - horizontalPadding,
-                width: tooltipWidth
-            });
-        }
-        else {
-            const startingPositionLeft = spaceToLeft + ttContainerWidth; // plus ttContainerWidth b/c left corner of toolTip is flush w/ right edge of toolTip container
-            setDimensions({
-                offsetTop,
-                offsetLeft: startingPositionLeft + horizontalPadding,
-                width: tooltipWidth
-            });
-        }
-    };
-
-    const _measureOffset = throttle(measureOffset, 16);
-
     useEffect(() => {
-        _measureOffset();
-        window.addEventListener("scroll", _measureOffset);
-        window.addEventListener("resize", _measureOffset);
+        const measureOffset = throttle(() => {
+            let tooltipWidth = 375;
+            const tooltipContainer = ref.current;
+            const ttContainerWidth = tooltipContainer.clientWidth;
+
+            const offsetTop = tooltipContainer.offsetTop + offsetAdjustments.top;
+            const totalSpace = window.innerWidth;
+            const spaceToLeft = tooltipContainer.offsetLeft;
+            const spaceToRight = (totalSpace - spaceToLeft) - ttContainerWidth;
+
+            if (wide && left) {
+                tooltipWidth = (spaceToLeft > 800)
+                    ? 700
+                    : spaceToLeft - 100;
+            }
+            else if (wide) {
+                tooltipWidth = (spaceToRight > 800)
+                    ? 700
+                    : spaceToRight - 100;
+            }
+
+            if (left) {
+                const startingPositionLeft = spaceToLeft - tooltipWidth; // minus tooltipWidth b/c right corner of toolTip is flush w/ left edge of toolTip container
+                setDimensions({
+                    offsetTop,
+                    offsetLeft: startingPositionLeft - horizontalPadding,
+                    width: tooltipWidth
+                });
+            }
+            else {
+                const startingPositionLeft = spaceToLeft + ttContainerWidth; // plus ttContainerWidth b/c left corner of toolTip is flush w/ right edge of toolTip container
+                setDimensions({
+                    offsetTop,
+                    offsetLeft: startingPositionLeft + horizontalPadding,
+                    width: tooltipWidth
+                });
+            }
+        }, 16);
+
+        measureOffset();
+
+        window.addEventListener("scroll", measureOffset);
+        window.addEventListener("resize", measureOffset);
+
         return () => {
-            window.removeEventListener("scroll", _measureOffset);
-            window.removeEventListener("resize", _measureOffset);
+            window.removeEventListener("scroll", measureOffset);
+            window.removeEventListener("resize", measureOffset);
         };
-    }, [_measureOffset]);
+    }, [left, wide, offsetAdjustments.top]);
 
     const handleShowTooltip = () => {
         if (!controlledProps.isControlled) {
