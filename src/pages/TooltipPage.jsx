@@ -16,8 +16,20 @@ class TooltipPage extends Component {
         return (
             <div className="component-page tooltip__page">
                 <div className="demo">
-                    <Tooltip tooltipComponent={<ExampleTooltipContent />}>
-                        <p>Hover on me kook</p>
+                    <Tooltip tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 30 }}>
+                        <p>Hover on me for a right-justified tooltip</p>
+                    </Tooltip>
+                    <Tooltip wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 30 }}>
+                        <p>Hover on me for a wide right-justified tooltip</p>
+                    </Tooltip>
+                    <Tooltip wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 30 }}>
+                        <p>Hover on me for a wide right-justified tooltip</p>
+                    </Tooltip>
+                    <Tooltip left wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
+                        <p>Hover on me for a left-justified tooltip</p>
+                    </Tooltip>
+                    <Tooltip left wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
+                        <p>Hover on me for a wide left-justified tooltip</p>
                     </Tooltip>
                 </div>
             </div>
