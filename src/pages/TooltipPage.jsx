@@ -14,7 +14,11 @@ const ExampleTooltipContent = () => (
     </div>
 );
 
-const detail = "The tooltip component is a really neat component and this is the explaination of all of it.";
+const detail = (
+    <p>
+        The tooltip component is a really neat component and this is the explaination of all of it.
+    </p>
+);
 
 class TooltipPage extends Component {
     render() {
