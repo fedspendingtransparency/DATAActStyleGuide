@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-import CodeSnippet from "../docs/CodeSnippet";
+import CodeSnippet, { buildPropDetails } from "../docs/CodeSnippet";
 import Tooltip from "../components/Tooltip";
 import Demo from "../docs/Demo";
 import DocumentationWrapper from "../docs/DocumentationWrapper";
-import { buildPropDetails } from "../docs/CodeSnippet";
 
 const ExampleTooltipContent = () => (
     <div className="tt__container">
@@ -17,7 +16,7 @@ const ExampleTooltipContent = () => (
 
 const detail = (
     <p>
-        The tooltip component is a really neat component and this is the explaination of all of it.
+        The tooltip component is a really neat component and this is the explanation of all of it.
     </p>
 );
 
@@ -37,7 +36,7 @@ class TooltipPage extends Component {
                 className="tooltip__page"
                 header="ToolTipWrapper.jsx"
                 detail={detail}>
-                <Demo prop>
+                <Demo >
                     <Tooltip tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 30 }}>
                         <p>Hover on me for a right-justified tooltip</p>
                     </Tooltip>
