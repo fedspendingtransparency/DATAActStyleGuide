@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Demo = ({
-    children
+    children,
+    className = ""
 }) => {
     return (
-        <div className="demo">
+        <div className={`demo ${className}`}>
             {children}
         </div>
     );

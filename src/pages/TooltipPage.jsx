@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import CodeSnippet, { buildPropDetails } from "../docs/CodeSnippet";
+import CodeSnippet from "../docs/CodeSnippet";
 import Tooltip from "../components/Tooltip";
 import Demo from "../docs/Demo";
-import DocumentationWrapper from "../docs/DocumentationWrapper";
+import DocumentationWrapper, { buildPropDetails } from "../docs/DocumentationWrapper";
 
 const ExampleTooltipContent = () => (
     <div className="tt__container">
@@ -35,29 +35,68 @@ class TooltipPage extends Component {
             <DocumentationWrapper
                 className="tooltip__page"
                 header="ToolTipWrapper.jsx"
-                detail={detail}>
-                <Demo >
+                detail={detail}
+                propDetailsMap={propDetails}>
+                <Demo>
                     <Tooltip tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 30 }}>
                         <p>Hover on me for a right-justified tooltip</p>
                     </Tooltip>
+                    <CodeSnippet>
+                        {`
+<Tooltip tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
+    <p>Hover on me for a wide left-justified tooltip</p>
+</Tooltip>
+`}
+                    </CodeSnippet>
+                </Demo>
+                <Demo>
                     <Tooltip wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 30 }}>
                         <p>Hover on me for a wide right-justified tooltip</p>
                     </Tooltip>
+                    <CodeSnippet>
+                        {`
+<Tooltip wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
+    <p>Hover on me for a wide right-justified tooltip</p>
+</Tooltip>
+`}
+                    </CodeSnippet>
+                </Demo>
+                <Demo>
                     <Tooltip wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 30 }}>
                         <p>Hover on me for a wide right-justified tooltip</p>
                     </Tooltip>
+                    <CodeSnippet>
+                        {`
+<Tooltip wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 30 }}>
+    <p>Hover on me for a wide right-justified tooltip</p>
+</Tooltip>
+`}
+                    </CodeSnippet>
+                </Demo>
+                <Demo>
                     <Tooltip left wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
                         <p>Hover on me for a left-justified tooltip</p>
                     </Tooltip>
+                    <CodeSnippet>
+                        {`
+<Tooltip left wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
+    <p>Hover on me for a left-justified tooltip</p>
+</Tooltip>
+`}
+                    </CodeSnippet>
+                </Demo>
+                <Demo>
                     <Tooltip left wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
                         <p>Hover on me for a wide left-justified tooltip</p>
                     </Tooltip>
-                </Demo>
-                <CodeSnippet propDetailsMap={propDetails}>
-{`<Tooltip left wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
+                    <CodeSnippet>
+                        {`
+<Tooltip left wide tooltipComponent={<ExampleTooltipContent />} offsetAdjustments={{ top: 0, right: 15 }}>
     <p>Hover on me for a wide left-justified tooltip</p>
-</Tooltip>`}
-                </CodeSnippet>
+</Tooltip>
+`}
+                    </CodeSnippet>
+                </Demo>
             </DocumentationWrapper>
         );
     }
