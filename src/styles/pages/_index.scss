@@ -1,11 +1,12 @@
-.component-page {
+.component-page,
+.home__page {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: $global-pad;
     margin: $global-mrg;
-    border: 1px solid red;
+    margin-left: $component-library-nav-width;
 }
 
 @import 'tooltipPage';

@@ -1,5 +1,7 @@
 import React from "react";
 
 export default () => (
-    <h1>Hello World</h1>
+    <div className="home__page">
+        <h1>Data Act Component Library</h1>
+    </div>
 );

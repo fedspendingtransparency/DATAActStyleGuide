@@ -8,14 +8,12 @@ import Nav from "./Nav";
 const history = createBrowserHistory();
 
 export default () => (
-    <div className="container">
-        <Router history={history}>
-            <div>
-                <Nav />
-                {routes.map((route) => (
-                    <Route exact={route.exact} path={route.link} component={route.component} />
-                ))}
-            </div>
-        </Router>
-    </div>
+    <Router history={history}>
+        <div className="container">
+            <Nav />
+            {routes.map((route) => (
+                <Route exact={route.exact} path={route.link} component={route.component} />
+            ))}
+        </div>
+    </Router>
 );
